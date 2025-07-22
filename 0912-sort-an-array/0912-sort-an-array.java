@@ -1,39 +1,45 @@
 class Solution {
     public int[] sortArray(int[] nums) {
-        quick(nums, 0, nums.length - 1);
+        mergeSortHelper(nums, 0,nums.length-1);
         return nums;
     }
+    public void mergeSortHelper(int [] arr, int low, int high){
+        if(low>=high){
+            return;
+        }
+        int mid=(low+ high)/2;
+        mergeSortHelper(arr,low,mid);
+        mergeSortHelper(arr,mid+1,high);
+        merge(arr,low,mid,high);
+    }
 
-    static void quick(int[] nums, int low, int high) {
-        // Base condition: single element or empty subarray
-        if (low >= high) return;
+    public void merge(int arr[],int low,int mid,int high){
 
-        int s = low;
-        int e = high;
-        int mid = (s + e) / 2;
-        int pivot = nums[mid]; // Pivot chosen as middle element
-
-        // Partition the array around the pivot
-        while (s <= e) {
-            while (nums[s] < pivot) {
-                s++;
+        int left=low;
+        int right=mid+1;
+        List<Integer> temp = new ArrayList<>();
+        while(left<=mid && right<=high){
+            if(arr[left]<arr[right]){
+                temp.add(arr[left]);
+                left++;
             }
-            while (nums[e] > pivot) {
-                e--;
-            }
-
-            if (s <= e) {
-                // Swap elements on the wrong side
-                int temp = nums[s];
-                nums[s] = nums[e];
-                nums[e] = temp;
-                s++;
-                e--;
+            else {
+                temp.add(arr[right]);
+                right++;
             }
         }
 
-        // Recursively sort the two halves
-        quick(nums, low, e);
-        quick(nums, s, high);
-    }
+        while(left<=mid){
+            temp.add(arr[left]);
+            left++;
+        }
+        while(right<=high){
+            temp.add(arr[right]);
+            right++;
+        }
+
+        for (int i = low; i <= high; i++) {
+            arr[i] = temp.get(i - low);
+        }
+    } 
 }

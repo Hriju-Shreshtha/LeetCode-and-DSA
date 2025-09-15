@@ -22,21 +22,21 @@ class Solution {
             }
         }
         
-        /* Checking if the stored element
-         is the majority element*/
-        int cnt1 = 0;
-        for (int i = 0; i < n; i++) {
-            if (nums[i] == el) {
-                cnt1++;
-            }
-        }
+        // /* Checking if the stored element
+        //  is the majority element*/
+        // int cnt1 = 0;
+        // for (int i = 0; i < n; i++) {
+        //     if (nums[i] == el) {
+        //         cnt1++;
+        //     }
+        // }
         
-        // Return element if it is a majority element
-        if (cnt1 > (n / 2)) {
+        // // Return element if it is a majority element
+        // if (cnt1 > (n / 2)) {
             return el;
-        }
+        // }
         
         // Return -1 if no such element found
-        return -1;
+        // return -1;
     }
 }

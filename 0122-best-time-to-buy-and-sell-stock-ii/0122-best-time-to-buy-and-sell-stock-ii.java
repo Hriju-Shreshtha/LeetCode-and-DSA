@@ -5,7 +5,7 @@ class Solution {
         for(int price: prices){
             if(price<minPrice){
                 minPrice=price;
-                continue;
+                // continue;
             }
             // minPrice=Math.min(price,minPrice);
             // if(price>=minPrice){

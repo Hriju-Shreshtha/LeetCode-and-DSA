@@ -1,23 +1,35 @@
+// class Solution {
+//     public int findDuplicate(int[] nums) {
+
+//         Set<Integer> set = new HashSet<>();
+//         int len = nums.length;
+//         for (int i = 0; i < len; i++) {
+//             if (!set.add(nums[i])) {
+//                 return nums[i];
+//             }
+//         }
+
+//         return len;
+
+//     }}
+
+
 class Solution {
-    public int findDuplicate(int[] nums) {
-        int i=0;
-        while (i<nums.length){
-            if(nums[i]!=i+1){
-            int correct = nums[i]-1;
-            if(nums[i]!= nums[correct]){
-                swap(nums, i, correct);
-            }
-            else return nums[i];
-            }
-        else{
-            i++;
+    static {  
+        for(int i=0 ;i<500;i++){
+            findDuplicate(new int[]{0});
         }
     }
-    return -1;
-}
-    public void swap(int [] num, int a, int b){
-        int temp = num[a];
-        num[a]= num[b];
-        num[b]= temp;
+
+    public static int findDuplicate(int[] nums) {
+        boolean seen[] = new boolean[nums.length+1];
+        for(int i=0; i<nums.length; i++){
+            if(!seen[nums[i]]){
+                seen[nums[i]] = true;
+            }else{
+                return nums[i];
+            }
+        }
+        return -1;
     }
 }

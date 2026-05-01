@@ -66,8 +66,9 @@ class LRUCache {
             Node node = m.get(key);
             node.val = value;
             deleteNode(node);
-            addNode(node);
-            return;
+            m.remove(key);
+            // addNode(node);
+            // return;
         }
 
         if (m.size() == cap) {

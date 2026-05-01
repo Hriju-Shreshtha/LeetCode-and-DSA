@@ -56,19 +56,10 @@ class LRUCache {
     }
 
     public void put(int key, int value) {
-        // if (m.containsKey(key)) {
-        //     Node curr = m.get(key);
-        //     // m.remove(key);
-        //     deleteNode(curr);
-        // }
-
         if (m.containsKey(key)) {
-            Node node = m.get(key);
-            node.val = value;
-            deleteNode(node);
+            Node curr = m.get(key);
             m.remove(key);
-            // addNode(node);
-            // return;
+            deleteNode(curr);
         }
 
         if (m.size() == cap) {

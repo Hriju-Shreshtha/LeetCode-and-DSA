@@ -49,7 +49,7 @@ class LRUCache {
             deleteNode(resNode);
             addNode(resNode);
 
-            // m.put(key, head.next);
+            // m.put(key, head.next); here we can skip the operations that remove and then add  from the unordered hash map because, if in this case if the key exists in the hash map then it will stay in the map, irrespective of where in the hashmap it is. the order in which the key-node pair is present in the map m is not relevant for which the remove and add operation was being done, as the order in being maintained by the doubly-linkedList.
             return ans;
         }
         return -1;

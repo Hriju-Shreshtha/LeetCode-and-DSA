@@ -58,7 +58,7 @@ class LRUCache {
     public void put(int key, int value) {
         if (m.containsKey(key)) {
             Node curr = m.get(key);
-            m.remove(key);
+            // m.remove(key);
             deleteNode(curr);
         }
 
